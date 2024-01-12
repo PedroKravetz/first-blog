@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs"); %> <% if (post.length>0){ %>
+<div class="container">
+  <% for (var i = post.length -1; i>=0; i--) { %>
+  <div class="d-flex flex-row justify-content-between align-items-center">
+    <div class="p-2">
+      <article class="blog-post">
+        <h2 class="display-5 link-body-emphasis mb-1"><%= titles[i] %></h2>
+        <p class="blog-post-meta"><%= timeStamp[i] %></p>
+        <p><%= post[i] %></p>
+      </article>
+    </div>
+    <div class="d-flex flex-column p-2 gap-2">
+      <form action="/change" method="POST">
+        <input type="text" name="title" value=<%= titles[i] %> hidden />
+        <textarea class="form-control" name="post" rows="3" hidden><%= post[i] %></textarea>
+        <button type="submit" class="btn btn-primary edit">Edit</button>
+      </form>
+      <form action="/delete" method="POST">
+        <input type="text" name="title" value=<%= titles[i] %> hidden />
+        <button type="submit" class="btn btn-danger edit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <% } %>
+</div>
+<% } else { %>
+<div class="container d-flex justify-content-center mt-5 align-items-center">
+  <h1>There are no posts!!!</h1>
+</div>
+<% } %> <%- include("partials/footer.ejs"); %>
