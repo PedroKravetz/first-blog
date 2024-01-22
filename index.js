@@ -64,6 +64,12 @@ app.post("/create", (req, res) => {
   var newDate = new Date();
   post.push(req.body["post"]);
   titles.push(req.body["title"]);
+  var hour =
+    newDate.getHours() < 10 ? "0" + newDate.getHours() : newDate.getHours();
+  var minutes =
+    newDate.getMinutes() < 10
+      ? "0" + newDate.getMinutes()
+      : newDate.getMinutes();
   timeStamp.push(
     months[newDate.getMonth()] +
       " " +
@@ -71,9 +77,9 @@ app.post("/create", (req, res) => {
       " " +
       newDate.getFullYear() +
       " " +
-      newDate.getHours() +
+      hour +
       ":" +
-      newDate.getMinutes()
+      minutes
   );
   res.redirect("/");
 });
