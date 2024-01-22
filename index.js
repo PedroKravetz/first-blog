@@ -69,7 +69,11 @@ app.post("/create", (req, res) => {
       " " +
       newDate.getDate() +
       " " +
-      newDate.getFullYear()
+      newDate.getFullYear() +
+      " " +
+      newDate.getHours() +
+      ":" +
+      newDate.getMinutes()
   );
   res.redirect("/");
 });
